@@ -4,6 +4,6 @@ import * as MetricsController from './controllers/metrics'
 
 let routes = express.Router()
 
-routes.post('/metrics', MetricsController.getMetrics)
+routes.get('/metrics', verifyUser, MetricsController.getMetrics)
 
 export default routes

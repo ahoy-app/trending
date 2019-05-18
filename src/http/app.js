@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 
 // Dispatch
 app.use((req, res, next) => {
-  res.db = app.get('db_conn')
+  req.db = app.get('db')
   next()
 })
 

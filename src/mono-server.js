@@ -4,14 +4,15 @@ import app from './http/app'
 import trendingListener from './trendings/trendingListener'
 
 import amqp from './config/amqp'
-import db from './config/db'
 
-Promise.all([db(), amqp()])
-  .then(([db_conn, amqp_conn]) => {
+Promise.all([amqp()])
+  .then(([amqp_conn]) => {
+    const db_conn = {}
+
     app.set('db', db_conn)
     app.set('amqp', amqp_conn)
 
-    const tl = trendingListener(db_conn, amqp_conn)
+    trendingListener(db_conn, amqp_conn)
     const server = http.createServer(app)
 
     const server_port = process.env.SERVER_PORT
