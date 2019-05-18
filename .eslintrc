@@ -1,0 +1,19 @@
+root: true
+
+extends:
+  - eslint:recommended
+
+env:
+  es6: true
+  node: true
+  browser: true
+  mocha: true
+
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+
+rules:
+   yoda: [error, never, { exceptRange: true }]
+   no-console: off
+   no-debugger: off
