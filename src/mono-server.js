@@ -15,7 +15,7 @@ Promise.all([amqp()])
     trendingListener(db_conn, amqp_conn)
     const server = http.createServer(app)
 
-    const server_port = process.env.SERVER_PORT
+    const server_port = process.env.PORT
 
     server.listen(server_port || 3000, () => {
       console.log(`Server started on port ${server.address().port}`)
