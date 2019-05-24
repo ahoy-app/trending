@@ -15,7 +15,7 @@ function onMessageCallback(db, message) {
 export default async (db, amqp) => {
   const ch = await amqp.createChannel()
   const q = await ch.assertQueue('', { exclusive: true, autoDelete: true })
-  await ch.bindQueue(q.queue, 'event', '#')
+  await ch.bindQueue(q.queue, 'event', 'room.#.new_message')
   await ch.consume(q.queue, message => {
     //Whenn AMQP message arrives
     if (message) {
